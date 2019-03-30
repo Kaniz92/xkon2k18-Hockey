@@ -4,12 +4,14 @@ import numpy as np
 
 from air_hockey import AirHockey
 from xkon_hockey import DataProcessor
+from genetic_env import Genetic
 
 class AirHockeyEnv(gym.Env):
     def __init__(self):
 
         self.game = AirHockey()
         self.processor = DataProcessor()
+        self.genetic_consumer = Genetic()
 
         self.height = self.width = self.processor.dim
 
@@ -92,8 +94,9 @@ class AirHockeyEnv(gym.Env):
         robot_action = self.processor.action_to_label(game_info.robot_action)
         human_action = self.processor.action_to_label(game_info.human_action)
 
-       # if game_info.scored is not None:
-        print(game_info.scored,game_info.puck_was_hit,game_info.puck_is_at_the_bottom,game_info.distance_decreased,game_info.hit_the_border,game_info.in_the_target)
+        if game_info.scored is not None:
+            self.genetic_consumer.calculatePopulation([4,-2,3.5,5,-11,-4.7])
+            print(game_info.scored,game_info.puck_was_hit,game_info.puck_is_at_the_bottom,game_info.distance_decreased,game_info.hit_the_border,game_info.in_the_target)
         # Reward
         reward = 0.0
         if self.episode == 'normal':
