@@ -1,0 +1,1 @@
+from xkon_hockey.envs.air_hockey_env import AirHockeyEnv
