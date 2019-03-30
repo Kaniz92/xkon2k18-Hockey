@@ -1,4 +1,4 @@
-import gym_air_hockey
+import xkon_hockey
 import gym
 import pygame
 
