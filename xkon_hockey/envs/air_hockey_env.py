@@ -2,9 +2,9 @@ import gym
 import gym.spaces
 import numpy as np
 
-from air_hockey import AirHockey
+from xkon_hockey.envs.game_env.air_hockey import AirHockey
 from xkon_hockey import DataProcessor
-from genetic_env import Genetic
+from xkon_hockey.envs.genetic_env.genetic_env import Genetic
 
 class AirHockeyEnv(gym.Env):
     def __init__(self):
